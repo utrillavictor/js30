@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('hello');
+
+    // Interpolated
+    console.log('Hello I am a %s string', '💩');
+    console.log(`Hello this is a 💩 string`);
+
+    // Styled
+    console.log('%c I am some great 💩', 'font-size: 20px; background: yellow;');
+
+    // warning!
+    console.warn('WOOO OH NOOOO');
+
+    // Error :|
+    console.error('💩!');
+
+    // Info
+    console.info('Giraffes have no vocal cords');
+
+    // Testing
+    console.assert(1.1 === 1, 'That is no true');
+
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+    const p = document.querySelector('p');
+    console.log(p);
+    console.dir(p);
+
+    // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.groupEnd(`${dog.name}`);
+    })
+
+    // counting
+    const cats = ["Garfield", "Tom", "Leono"];
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Jobs');
+    console.count('Jobs');
+    console.count('Jobs');
+    console.count(cats); // will count only the instance
+
+    // timing
+    console.time('fetching data');
+    fetch('https://swapi.co/api/species')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+    console.table(cats);
+
+  </script>
+</body>
+</html>
